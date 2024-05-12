@@ -5,6 +5,7 @@ import Link from 'next/link'
 import SectionSubHeading from '../Components/ui/SectionSubHeading'
 import ComplaintPost from '../Components/ui/ComplaintPost'
 import complaintData from '../db/complaint'
+import { ComplaintTabs } from '../Components/layout/ComplaintTabs'
 
 export default function page() {
   const renderActive = () => {
@@ -46,7 +47,12 @@ export default function page() {
         <Link href='/Complaints/new'><Button color={'blue'} size={'md'}>Create New</Button></Link>
       </div>
 
-      <div className="grid grid-cols-2 h-screen *:px-4 *:gap-4">
+      <ComplaintTabs />
+    </section>
+  )
+}
+
+      {/* <div className="grid grid-cols-2 h-screen *:px-4 *:gap-4">
         <div className='flex flex-col border-e'>
           <SectionSubHeading title={'Active Complaints'}/>
           {renderActive()}
@@ -56,7 +62,4 @@ export default function page() {
           <SectionSubHeading title={'Closed Complaints'} />
           {renderCompleted()}
         </div>
-      </div>
-    </section>
-  )
-}
+      </div> */}
