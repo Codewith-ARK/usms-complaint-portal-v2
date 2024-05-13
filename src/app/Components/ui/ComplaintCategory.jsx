@@ -1,17 +1,20 @@
 
 "use client";
 
-import { Dropdown } from "flowbite-react";
-import { useState } from "react";
+import { Label, Select } from "flowbite-react";
 
 export function ComplaintCategory() {
-  const [category, setCategory] = useState();
   return (
-    <Dropdown label="Complaint Category" dismissOnClick={true} color={'light'} size={'sm'}>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
+    <div className="">
+      <div className="mb-2 block">
+        <Label htmlFor="category" value="Category" />
+      </div>
+      <Select id="category" required>
+        <option>Faculty</option>
+        <option>Management</option>
+        <option>Cleanliness</option>
+        <option>Other</option>
+      </Select>
+    </div>
   );
 }
