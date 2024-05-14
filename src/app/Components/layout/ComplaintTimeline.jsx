@@ -7,7 +7,6 @@ import StatusBadge from "../ui/StatusBadge";
 export function ComplaintTimeline({date, category, title, body, complaintId,isResolved}) {
   return (
     <Timeline>
-
       <Timeline.Item>
         <Timeline.Point icon={Calendar} />
         <Timeline.Content>
