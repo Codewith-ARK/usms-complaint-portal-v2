@@ -1,31 +1,10 @@
 'use client'
 import { FileDropzone } from '@/app/Components/ui/FileDropzone'
 import SectionHeading from '@/app/Components/ui/SectionHeading'
-import { createComplaint } from '@/app/db/utils'
 import { Button, Label, TextInput, Textarea, Select } from 'flowbite-react'
 import React, { useState } from 'react'
 
 export default function page() {
-
-  async function handleSubmit(){
-    const data = {
-      title: complaintTitle,
-      desc: complaintBody,
-      category: ComplaintCategory,
-      isResolved: false,
-      upvotes: 0,
-    }
-    await createComplaint(data)
-
-    resetInput()
-  }
-
-  function resetInput(){
-    setComplaintTitle('')
-    setComplaintBody('')
-    setComplaintCategory('')
-  }
-
   const [complaintTitle, setComplaintTitle] = useState('');
   const [complaintBody, setComplaintBody] = useState('')
   const [ComplaintCategory, setComplaintCategory] = useState('')
@@ -57,7 +36,7 @@ export default function page() {
         <FileDropzone />
       </div>
       <div className="flex gap-3 mt-4">
-        <Button color={'blue'} onClick={handleSubmit}>Submit Complaint</Button>
+        <Button color={'blue'}>Submit Complaint</Button>
         <Button color={'light'}>Save Draft</Button>
         <Button color={'failure'}>Cancel</Button>
       </div>
