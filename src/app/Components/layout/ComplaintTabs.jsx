@@ -2,10 +2,11 @@
 import { Tabs } from "flowbite-react";
 import { ComplaintTimeline } from "./ComplaintTimeline";
 
-export async function ComplaintTabs() {
+export function ComplaintTabs() {
   return (
     <Tabs aria-label="Tabs with underline" style="underline">
       <Tabs.Item active title="Your Complaints" color="blue">
+        {/* Fetch data here or in the ComplaintTimeline component */}
         <ComplaintTimeline />
       </Tabs.Item>
       <Tabs.Item title="General">
