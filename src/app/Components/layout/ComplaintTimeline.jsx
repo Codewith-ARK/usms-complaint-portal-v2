@@ -3,15 +3,22 @@
 import { Badge, FooterDivider, Timeline } from "flowbite-react";
 import {Calendar, FlagIcon, ThumbsUp } from "lucide-react";
 import StatusBadge from "../ui/StatusBadge";
+import { format } from 'date-fns';
 
-export function ComplaintTimeline({date, category, title, body, complaintId,isResolved}) {
+export function ComplaintTimeline({date, category, title, body, complaintId,isResolved, id, upvotes}) {
+
+  const oldDate = date;
+  const formattedTime = format(oldDate, 'h:mm a');
+  const formattedDate = format(oldDate, 'dd-MMM-yyyy');
+  const newDate = `${formattedTime} || ${formattedDate}`;
+
   return (
     <Timeline>
       <Timeline.Item>
         <Timeline.Point icon={Calendar} />
         <Timeline.Content>
           <div className="flex justify-between items-center">
-            <Timeline.Time>{date ? date : "10-Jan-2024"}</Timeline.Time>
+            <Timeline.Time>{newDate ? newDate : "10-Jan-2024"}</Timeline.Time>
             <div className="flex gap-3 items-center">
               <StatusBadge status={isResolved ? isResolved : false} />
               <Badge size={'sm'}>{category ? category : 'Default'}</Badge>

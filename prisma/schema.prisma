@@ -8,10 +8,38 @@ datasource db {
 }
 
 model complaints {
-  id               Int      @id @default(autoincrement())
-  title            String   @db.VarChar(255)
-  description      String?
-  date_of_creation DateTime @db.Date
-  category         String?  @db.VarChar(50)
-  upvotes          Int?     @default(0)
+  id                                         Int      @id @default(autoincrement())
+  title                                      String   @db.VarChar(255)
+  description                                String?
+  date_of_creation                           DateTime @db.Date
+  status                                     String   @db.VarChar(50)
+  author_id                                  Int
+  assigned_person_id                         Int?
+  upvotes                                    Int?     @default(0)
+  media_path                                 String?  @db.VarChar(255)
+  users_complaints_assigned_person_idTousers users?   @relation("complaints_assigned_person_idTousers", fields: [assigned_person_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users_complaints_author_idTousers          users    @relation("complaints_author_idTousers", fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model userdetails {
+  id              Int     @id
+  batch_code      String? @db.VarChar(50)
+  department_code String? @db.VarChar(50)
+  faculty_id      String? @db.VarChar(50)
+  department      String? @db.VarChar(255)
+  users           users   @relation(fields: [id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model users {
+  id                                              Int          @id @default(autoincrement())
+  first_name                                      String       @db.VarChar(255)
+  last_name                                       String       @db.VarChar(255)
+  email                                           String       @unique @db.VarChar(255)
+  password                                        String       @db.VarChar(255)
+  created_at                                      DateTime     @default(now()) @db.Timestamp(6)
+  user_type                                       String       @db.VarChar(255)
+  profile_picture_path                            String?      @db.VarChar(255)
+  complaints_complaints_assigned_person_idTousers complaints[] @relation("complaints_assigned_person_idTousers")
+  complaints_complaints_author_idTousers          complaints[] @relation("complaints_author_idTousers")
+  userdetails                                     userdetails?
 }
