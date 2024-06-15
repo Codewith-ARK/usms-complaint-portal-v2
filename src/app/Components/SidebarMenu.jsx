@@ -1,9 +1,10 @@
 
 "use client";
 
-import { Sidebar } from "flowbite-react";
+import { Button, Sidebar } from "flowbite-react";
 import { UserAvatar } from "./ui/Avatar";
-import { LayoutDashboard,MessageCircleWarning, Inbox, UserRoundCog } from "lucide-react";
+import { LayoutDashboard,MessageCircleWarning, Inbox, UserRoundCog, Home } from "lucide-react";
+import Link from "next/link";
 
 export function SidebarMenu() {
   return (
@@ -17,21 +18,35 @@ export function SidebarMenu() {
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
           {/* Item 1 */}
-          <Sidebar.Item href="/Dashboard" icon={LayoutDashboard} className='hover:bg-blue-200'>
+          <Link href='/'>
+          <Sidebar.Item icon={Home} className='hover:bg-blue-200'>
+            Home
+          </Sidebar.Item>
+          </Link>
+          {/* Item 2 */}
+          <Link href="/Dashboard">
+          <Sidebar.Item  icon={LayoutDashboard} className='hover:bg-blue-200'>
             Dashboard
           </Sidebar.Item>
-          {/* Item 2 */}
-          <Sidebar.Item href="/Complaints" icon={MessageCircleWarning} className='hover:bg-blue-200'>
+          </Link>
+          {/* Item 3 */}
+          <Link href="/Complaints">
+          <Sidebar.Item  icon={MessageCircleWarning} className='hover:bg-blue-200'>
             Complaints
           </Sidebar.Item>
-          {/* Item 3 */}
-          <Sidebar.Item href="/Inbox" icon={Inbox} className='hover:bg-blue-200'>
+          </Link>
+          {/* Item 4 */}
+          <Link href="/Inbox">
+          <Sidebar.Item  icon={Inbox} className='hover:bg-blue-200'>
             Inbox
           </Sidebar.Item>
-          {/* Item 4 */}
-          <Sidebar.Item href="/User/edit" icon={UserRoundCog} className='hover:bg-blue-200'>
+          </Link>
+          {/* Item 5 */}
+          <Link href="/User/edit">
+          <Sidebar.Item icon={UserRoundCog} className='hover:bg-blue-200'>
             Customize Profile
           </Sidebar.Item>
+          </Link>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>
