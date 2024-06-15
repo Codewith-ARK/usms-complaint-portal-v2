@@ -50,6 +50,8 @@ export async function createUser(data) {
       },
     },
   });
+
+  return data
 }
 
 // fetch user
