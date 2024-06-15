@@ -32,7 +32,7 @@ export default function page() {
   function resetInput(){
     setComplaintTitle('');
     setComplaintBody('');
-    ComplaintCategory('');
+    setComplaintCategory('');
   }
 
   return (
