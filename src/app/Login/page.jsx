@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import Loading from './Components/Loading'
+import Loading from '../Components/ui/Loading'
 import LoginComponent from './Components/LoginComponent'
 
 export default function page() {
