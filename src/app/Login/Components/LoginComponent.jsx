@@ -1,8 +1,7 @@
 'use client'
 import SectionHeading from '@/app/Components/ui/SectionHeading'
 import SectionSubHeading from '@/app/Components/ui/SectionSubHeading'
-import UserContext from '@/app/Context/userContext'
-import Required from '@/app/Signup/Components/Required'
+import LoginContext from '@/app/Context/loginContext'
 import axios from 'axios'
 import { Button, Label, TextInput } from 'flowbite-react'
 import Link from 'next/link'
@@ -12,7 +11,7 @@ import React, { useContext, useState } from 'react'
 export default function LoginComponent({ isLoading, setIsLoading }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { setIsLoggedIn } = useContext(UserContext);
+  const { setIsLoggedIn } = useContext(LoginContext);
   const router = useRouter();
   const data = {
     email: email,

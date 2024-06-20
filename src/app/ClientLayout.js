@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { SidebarMenu } from './Components/SidebarMenu';
-import { useUser } from './Context/userContext';
+import { useLogin } from './Context/loginContext';
 
 export default function ClientLayout({ children }) {
-  const { isLoggedIn } = useUser();
+  const { isLoggedIn } = useLogin();
 
   return (
     <div className="flex last:flex-grow">

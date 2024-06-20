@@ -2,10 +2,10 @@
 import React, { useContext, useEffect } from 'react';
 import SectionHeading from './Components/ui/SectionHeading';
 import { useRouter } from 'next/navigation';
-import UserContext from './Context/userContext';
+import LoginContext from './Context/loginContext';
 
 export default function Page() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
   const router = useRouter();
 
   useEffect(() => {
