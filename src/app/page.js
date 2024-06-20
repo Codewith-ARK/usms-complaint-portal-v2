@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import LoginContext from './Context/loginContext';
 
 export default function Page() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+  const { isLoggedIn } = useContext(LoginContext);
   const router = useRouter();
 
   useEffect(() => {
