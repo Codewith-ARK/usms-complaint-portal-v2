@@ -1,17 +1,19 @@
 'use client'
 import SectionHeading from '@/app/Components/ui/SectionHeading'
 import SectionSubHeading from '@/app/Components/ui/SectionSubHeading'
-import LoginContext from '@/app/Context/loginContext'
+import { useLogin } from '@/app/Context/loginContext'
+import { useUser } from '@/app/Context/userContext'
 import axios from 'axios'
 import { Button, Label, TextInput } from 'flowbite-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function LoginComponent({ isLoading, setIsLoading }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { setIsLoggedIn } = useContext(LoginContext);
+  const { setIsLoggedIn } = useLogin()
+  const { updateUser } = useUser()
   const router = useRouter();
   const data = {
     email: email,
@@ -27,10 +29,13 @@ export default function LoginComponent({ isLoading, setIsLoading }) {
     setIsLoading(true);
     const response = await axios.post('/api/auth', data);
     if (response.status === 200) {
+      updateUser(response.data.user)
       setIsLoggedIn(true);
       setIsLoading(false);
       clearFields();
       router.push('/');
+    } else {
+      setIsLoading(false);
     }
   }
   return (

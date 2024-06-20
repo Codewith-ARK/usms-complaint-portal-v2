@@ -1,6 +1,7 @@
 'use client'
 import { FileDropzone } from '@/app/Components/ui/FileDropzone'
 import SectionHeading from '@/app/Components/ui/SectionHeading'
+import { useUser } from '@/app/Context/userContext'
 import { Button, Label, TextInput, Textarea, Select } from 'flowbite-react'
 import React, { useState } from 'react'
 
@@ -9,13 +10,16 @@ export default function page() {
   const [complaintTitle, setComplaintTitle] = useState('');
   const [complaintBody, setComplaintBody] = useState('')
   const [ComplaintCategory, setComplaintCategory] = useState('')
+  const {user} = useUser();
+  const {userId} = user;
 
   function handleSubmit() {
     const data = {
       title: complaintTitle,
       description: complaintBody,
       category: ComplaintCategory,
-      status: 'submitted'
+      status: 'submitted',
+      authorId: userId,
     }
 
     fetch('/api/createComplaint', {
@@ -24,7 +28,7 @@ export default function page() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data)
-    }).then(res => { if (res.ok) console.log('Complaint Submitted!') })
+    }).then(res => { if (res.ok) console.log('Complaint Submitted!') });
 
     resetInput();
   }

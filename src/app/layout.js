@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <LoginProvider>
-          {/* <UserProvider> */}
-          <ClientLayout>{children}</ClientLayout>
-          {/* </UserProvider> */}
+          <UserProvider>
+            <ClientLayout>{children}</ClientLayout>
+          </UserProvider>
         </LoginProvider>
       </body>
     </html>

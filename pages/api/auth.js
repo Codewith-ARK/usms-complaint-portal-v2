@@ -21,7 +21,8 @@ export default async function handler(req, res) {
       }
 
       if (result) {
-        res.status(200).json({ message: "Login successful" });
+        res.status(200).json({ message: "Login successful", user });
+        return user;
       } else {
         res.status(401).json({ message: "Incorrect password" });
       }
